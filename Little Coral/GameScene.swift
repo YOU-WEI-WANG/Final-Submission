@@ -195,7 +195,7 @@ class GameScene: SKScene {
             self.initialFishCount = self.initialFishCount + 1;
         }
         //contorl the fish and bubbles generate rate, the bigger value the slower the fish and bubbles generate.
-        if times > 40 {
+        if times > 20 {
             creatFish()
             creatBubble()
             times = 0;
@@ -221,8 +221,8 @@ class GameScene: SKScene {
             addChild(bubble!)
             bubble!.position = CGPoint(x: position.x, y: coral.position.y + coral.frame.size.height/2)
             
-            //the bubbles animation, taking 20 seconds
-            let waitAction = SKAction.wait(forDuration: 20)
+            //the bubbles animation, taking 30 seconds
+            let waitAction = SKAction.wait(forDuration: 30)
             let removeAtion = SKAction.removeFromParent()
             
             bubble!.run(SKAction.sequence([waitAction,removeAtion]))
