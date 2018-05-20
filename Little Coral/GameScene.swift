@@ -20,7 +20,7 @@ class GameScene: SKScene {
     private var scoreLabel : SKLabelNode!
     private var levelLabel : SKLabelNode!
     private var finishedLabel: SKLabelNode!
-    private let scoreSet = [5, 15, 35, 60, 95, 115, 135, 155, 175, 200]
+    private let scoreSet = [5, 10, 15, 20, 25, 35, 45, 55, 65, 70]
     private var max = false
     
     override func didMove(to view: SKView) {
@@ -188,14 +188,14 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         times = times + 1;
         
-        //when initial the game, generate 3 fished in the beginning
-        if self.initialFishCount < 3{
+        //when initial the game, generate 10 fished in the beginning
+        if self.initialFishCount < 10{
             creatFish()
             creatBubble()
             self.initialFishCount = self.initialFishCount + 1;
         }
         //contorl the fish and bubbles generate rate, the bigger value the slower the fish and bubbles generate.
-        if times > 180 {
+        if times > 40 {
             creatFish()
             creatBubble()
             times = 0;
@@ -221,8 +221,8 @@ class GameScene: SKScene {
             addChild(bubble!)
             bubble!.position = CGPoint(x: position.x, y: coral.position.y + coral.frame.size.height/2)
             
-            //the bubbles animation, taking 40 seconds
-            let waitAction = SKAction.wait(forDuration: 40)
+            //the bubbles animation, taking 20 seconds
+            let waitAction = SKAction.wait(forDuration: 20)
             let removeAtion = SKAction.removeFromParent()
             
             bubble!.run(SKAction.sequence([waitAction,removeAtion]))
